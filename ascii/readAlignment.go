@@ -28,11 +28,8 @@ func AlignmentManagement() string {
 		args = append(args, align)
 	}
 	// the default alignment will be left unless the user chooses otherwise
-	if align == "left" || align == "right" || align == "justify" || align == "center" {
-		align = "--align=" + align
-	}
 	if align != "--align=left" && align != "--align=right" && align != "--align=justify" && align != "--align=center" {
-		log.Fatal("Usage: this alignment is unavailable \nPlease choose one of the available alignments \n1 : left \n2 : right \n3 : justify")
+		log.Fatal("Usage: go run . [OPTION] [STRING] [BANNER]\n\nExample: go run . --align=right something standard\n\n\nthis alignment is unavailable \nPlease choose one of the available alignments\n1 : --align=left \n2 : --align=right \n3 : --align=center\n4 : --align=justify\n\n**make sure to respect the format of the alignment")
 	}
 
 	if len(args) == 1 {
