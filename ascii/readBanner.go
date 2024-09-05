@@ -1,7 +1,6 @@
 package ascii
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strings"
@@ -18,24 +17,26 @@ func BannerManagement() string {
 	}
 	// the default styling will be standard.txt unless the user chooses otherwise
 	Banner = "standard.txt"
+	if len(args) == 1 {
+		args = append(args, Banner)
+	}
 	if len(args) == 3 {
 		Banner = args[2]
-	} else if len(args) == 1 {
-		args = append(args, align, Banner)
-	} else if len(args) == 2 && args[1] == Banner {
-		args = append([]string{align}, args...)
-	} else if len(args) == 2 && args[1] != Banner {
-		input = args[1]
 	}
+	if len(args) == 2 && (args[0] == "--align=left" || args[0] == "--align=right" || args[0] == "--align=center" || args[0] == "--align=justify") {
+		input = args[1]
+		align = args[0]
+		args = append(args, Banner)
+	}
+
 	// we add a .txt extension to the banner if it doesn't already exist
 	// this way weather the user adds it or not it won't make a difference
-	if !strings.HasSuffix(args[2], ".txt") {
-		args[2] += ".txt"
+	if !strings.HasSuffix(Banner, ".txt") {
+		Banner += ".txt"
 	}
 	// we inform the user of the available styles if he doesn't choose a proper one
-	if args[2] != "standard.txt" && args[2] != "thinkertoy.txt" && args[2] != "shadow.txt" {
+	if Banner != "standard.txt" && Banner != "thinkertoy.txt" && Banner != "shadow.txt" {
 		log.Fatal("Usage: this style is unavailable \nPlease choose one of the available styles \n1 : standard \n2 : thinkertoy \n3 : shadow")
 	}
-	fmt.Println("Banner is : ", Banner)
 	return Banner
 }

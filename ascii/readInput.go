@@ -18,7 +18,8 @@ func InputManagement() (string, []string) {
 	args := os.Args[1:]
 	if len(args) == 1 {
 		input = args[0]
-	} else if len(args) > 1 {
+	}
+	if len(args) == 3 {
 		input = args[1]
 	}
 	// we split it by literal newline

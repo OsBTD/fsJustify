@@ -1,7 +1,6 @@
 package ascii
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
@@ -15,8 +14,18 @@ func AlignmentManagement() string {
 		log.Fatal("Usage: go run . [OPTION] [STRING] [BANNER]\n\nExample: go run . --align=right something standard")
 	}
 	align = "--align=left"
+	if len(args) == 1 {
+		args = append(args, align)
+	}
+
 	if len(args) == 3 {
 		align = args[0]
+	}
+
+	if len(args) == 2 && (args[1] == "standard.txt" || args[1] == "shadow.txt" || args[1] == "thinkertoy.txt" || args[1] == "standard" || args[1] == "shadow" || args[1] == "thinkertoy") {
+		input = args[0]
+		Banner = args[1]
+		args = append(args, align)
 	}
 	// the default alignment will be left unless the user chooses otherwise
 	if align == "left" || align == "right" || align == "justify" || align == "center" {
@@ -34,6 +43,5 @@ func AlignmentManagement() string {
 	// we formate the alignment in the correct way if the user doesn't do so
 	// this way weather the user does the formatting correctly or not it won't make a difference
 	// we inform the user of the available styles if he doesn't choose a proper one
-	fmt.Println("alignement is : ", align)
 	return align
 }

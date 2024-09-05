@@ -56,6 +56,5 @@ func CalculateLength() (int, int, int, int) {
 		NoSpaces = AsciiLength - countspace*6
 
 	}
-	fmt.Println("terminal length is : ", TerminalLength, "\nlenght of ascii is : ", AsciiLength, "\nno spaces is : ", NoSpaces, "\nnumber of spaces is : ", countspace)
 	return TerminalLength, AsciiLength, NoSpaces, countspace
 }
