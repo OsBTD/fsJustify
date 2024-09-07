@@ -19,6 +19,7 @@ var (
 func CalculateLength() (int, int, int, int) {
 	// we calculate the length of the terminal
 	cmd := exec.Command("stty", "size")
+	//tput cols or tput lines 
 	cmd.Stdin = os.Stdin
 	output, err := cmd.Output()
 	if err != nil {
