@@ -19,7 +19,7 @@ var (
 func CalculateLength() (int, int, int, int) {
 	// we calculate the length of the terminal
 	cmd := exec.Command("stty", "size")
-	//tput cols or tput lines 
+	// tput cols or tput lines
 	cmd.Stdin = os.Stdin
 	output, err := cmd.Output()
 	if err != nil {
@@ -34,10 +34,9 @@ func CalculateLength() (int, int, int, int) {
 
 	// Now for the ascii characters
 	// starting by getting all the values needed
-	Banner = BannerManagement()
+	_, _, Banner, _, inputsplit = ArgsManagement()
 	Lines = ReadText(Banner)
 	Replace = Populate()
-	_, inputsplit = InputManagement()
 
 	// no space would be the lenght of the ascii characters minus the spaces
 	// countspace will count the number of spaces

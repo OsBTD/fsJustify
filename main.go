@@ -6,9 +6,7 @@ import (
 
 func main() {
 	// we get the banner style and input text from user input
-	banner := ascii.BannerManagement()
-	input, inputSplit := ascii.InputManagement()
-	// we read the ASCII art characters from the chosen banner file
+	filename,align, banner, input, inputSplit := ascii.ArgsManagement() // we read the ASCII art characters from the chosen banner file
 	ascii.ReadText(banner)
 
 	// we populate the map with ASCII characters
@@ -16,6 +14,6 @@ func main() {
 
 	// and finally we print the resulting ascii art
 
-	ascii.PrintArt(input, inputSplit, replaceMap)
+	ascii.PrintArt(filename, align, input, inputSplit, replaceMap)
 	ascii.CalculateLength()
 }

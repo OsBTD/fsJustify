@@ -1,8 +1,0 @@
-len 1 = text
-
-len 2 = text banner
-
-len 2 = align text
-
-
-len 3 = all args
